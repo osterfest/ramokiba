@@ -1,11 +1,19 @@
 const video = document.getElementById("video");
 const canvas = document.getElementById("canvas");
 const button = document.getElementById("screenshot");
+const switchButton = document.getElementById("switchCamera");
+
+let currentFacingMode = "user"; // Start mit Selfie-Kamera
+let stream = null;
 
 async function startCamera() {
+    if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+    }
+
     try {
-        const stream = await navigator.mediaDevices.getUserMedia({
-            video: { facingMode: "user" }, // Selfie-Kamera
+        stream = await navigator.mediaDevices.getUserMedia({
+            video: { facingMode: currentFacingMode },
             audio: false
         });
         video.srcObject = stream;
@@ -23,7 +31,7 @@ button.addEventListener("click", () => {
     // Videobild einfügen
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-    // Rahmen einfügen
+    // Rahmen drüberzeichnen
     const frame = document.getElementById("rahmen");
     const img = new Image();
     img.src = frame.src;
@@ -36,6 +44,11 @@ button.addEventListener("click", () => {
         link.href = canvas.toDataURL("image/png");
         link.click();
     };
+});
+
+switchButton.addEventListener("click", () => {
+    currentFacingMode = currentFacingMode === "user" ? "environment" : "user";
+    startCamera();
 });
 
 startCamera();
