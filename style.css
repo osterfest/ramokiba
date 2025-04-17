@@ -49,11 +49,15 @@ button {
 }
 
 #screenshot {
-    bottom: 20px;
+    bottom: 80pt;
     background: white;
+    left: 40%;
+    width: 50pt;
 }
 
 #switchCamera {
-    bottom: 70px;
+    bottom: 80pt;
     background: #eee;
+    left: 60%;
+    width: 50pt;
 }
