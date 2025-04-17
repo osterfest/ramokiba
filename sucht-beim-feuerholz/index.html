@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Kamera mit Rahmen</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div id="camera-container">
+        <video id="video" autoplay playsinline></video>
+        <img id="rahmen" src="hint-1-ar.png" alt="Rahmen-Overlay" />
+        <button id="screenshot">📸 Foto machen</button>
+        <button id="switchCamera">🔄 Kamera wechseln</button>
+        <canvas id="canvas" style="display: none;"></canvas>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
